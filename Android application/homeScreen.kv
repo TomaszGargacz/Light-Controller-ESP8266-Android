@@ -1,0 +1,108 @@
+<MyLayout>
+
+    brightness_slider_text: brightness_slider_label
+    time_slider_text: time_slider_label
+    light_off_delay_slider_text: light_off_actual_delay_label
+    set_IP_textbox_text: set_ip_text_input
+
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+
+        GridLayout:                                 # Light on/off button
+            size: root.width, root.height
+            cols: 1
+
+            Button:
+                id: ON_OFF_button
+                text: "ON/OFF"
+                font_size: 48
+                on_press: root.onOffButton()
+        
+        GridLayout:                                 # Light pulse start button
+            size: root.width, root.height
+            cols: 1
+
+            Button:
+                id: pulse_button
+                text: "PULSE ON"
+                font_size: 48
+                on_press: root.pulseButton()
+
+        GridLayout:                                 # Pulse time period slider
+            size: root.width, root.height
+            cols: 3
+
+            Label:
+                id: pulse_time_slider_label
+                text: "Pulse time (s)"
+                font_size: 48
+
+            Slider:
+                id: pulse_time_slider
+                min: 1
+                max: 10
+                step: 0.1
+                on_value: root.pulseTimeChange(*args)
+                gravity: "right"
+
+            Label:
+                id: time_slider_label
+                font_size: 48
+
+        GridLayout:                                 # Brightness slider
+            size: root.width, root.height
+            cols: 3
+
+            Label:
+                id: slider_name_label
+                text: "Brightness"
+                font_size: 48
+
+            Slider:
+                id: brightness_slider
+                min: 0
+                max: 100
+                step: 1
+                on_value: root.brightnessChange(*args)
+                gravity: "right"
+
+            Label:
+                id: brightness_slider_label
+                font_size: 48
+
+        GridLayout:                                 # Light off delay time slider - movement detection sensor
+            size: root.width, root.height
+            cols: 3
+
+            Label:
+                id: light_off_delay_label
+                text: "Light off delay (s)"
+                font_size: 48
+
+            Slider:
+                id: light_off_delay_label_slider
+                min: 0
+                max: 30
+                step: 1
+                on_value: root.lightOffDelayChange(*args)
+                gravity: "right"
+
+            Label:
+                id: light_off_actual_delay_label
+                font_size: 48
+
+        GridLayout:                                 # Set IP by user
+            size: root.width, root.height
+            cols: 2
+
+            TextInput:
+                id: set_ip_text_input
+                font_size: 48
+                text_pos: "center"
+
+            Button:
+                id: set_ip_button
+                text: "SET"
+                font_size: 48
+                on_press: root.setIPButton()
